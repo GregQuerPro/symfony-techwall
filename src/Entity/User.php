@@ -28,6 +28,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, unique: true)]
     private ?string $email = null;
 
+    #[ORM\Column(type: "json", nullable: true, options : ['jsonb' => true])]
+    private array $json = [];
+
     public function getId(): ?int
     {
         return $this->id;
@@ -94,6 +97,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getJson(): array
+    {
+        return $this->json;
+    }
+
+    public function setJson(array $json): self
+    {
+        $this->json = $json;
 
         return $this;
     }

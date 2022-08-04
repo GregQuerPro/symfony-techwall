@@ -31,7 +31,7 @@ class Property
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[Assert\Range(min: 10, max: 400, notInRangeMessage: 'La valeur doit être comprise entre {{ min }}m2 et {{ max }}m2')]
+    #[Assert\Range(notInRangeMessage: 'La valeur doit être comprise entre {{ min }}m2 et {{ max }}m2', min: 10, max: 400)]
     #[ORM\Column]
     private ?int $surface = null;
 
